@@ -2,11 +2,6 @@
 
 node 'dev-box' {
 
-	exec { 'Config repo':
-		command => '/bin/sh -c "cd /home/dev/Sources/OSGP/Config; /usr/bin/git checkout development"',
-		returns => [0,128],
-	}
-
 	exec { 'Shared repo':
 		command => '/bin/sh -c "cd /home/dev/Sources/OSGP/Shared; /usr/bin/git checkout development"',
 		returns => [0,128],

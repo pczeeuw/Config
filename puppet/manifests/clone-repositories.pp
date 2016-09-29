@@ -3,7 +3,7 @@
 node 'dev-box' {
 
 	exec { 'cloning Config repo':
-		command => '/usr/bin/git clone https://github.com/OSGP/Config.git /home/dev/Sources/OSGP/Config',
+		command => '/usr/bin/git clone -b "FLEX-2214-Setup-initial-automatic-test-framework" https://github.com/OSGP/Config.git /home/dev/Sources/OSGP/Config',
 	}
 
 	exec { 'cloning Shared repo':

@@ -26,7 +26,7 @@ node 'dev-box' {
 
 	file { 'Update eclipse.ini':
 		path => '/home/dev/Tools/eclipse/eclipse.ini',
-		content => template('/home/dev/Sources/OSGP/Config/puppet/manifests/eclipse.ini.tpl'),
+		content => template('/home/vagrant/repos/OSGP/Config/puppet/manifests/eclipse.ini.tpl'),
 		require => Exec['unpack eclipse']
 	}
 

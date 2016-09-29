@@ -14,12 +14,12 @@ node 'dev-box' {
 		command => '/bin/tar xzf /home/dev/Downloads/osgp/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz -C /home/dev/Tools',
 	}
 
-	exec { 'install cucumber-eclipse plugin':
+	exec { 'install cucumber-eclipse plugin 1':
 		command => '/home/dev/Tools/eclipse/eclipse -application org.eclipse.equinox.p2.director -nosplash -repository http://cucumber.github.io/cucumber-eclipse/update-site -installIUs cucumber.eclipse.feature.feature.group',
 		require => Exec['unpack eclipse']
 	}
 
-	exec { 'install cucumber-eclipse plugin':
+	exec { 'install cucumber-eclipse plugin 2':
 		command => '/home/dev/Tools/eclipse/eclipse -application org.eclipse.equinox.p2.director -nosplash -repository https://otto.takari.io/content/sites/m2e.extras/m2eclipse-mavenarchiver/0.17.2/N/LATEST/ -installIUs org.sonatype.m2e.mavenarchiver.feature.feature.group',
 		require => Exec['unpack eclipse']
 	}

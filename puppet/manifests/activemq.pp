@@ -14,15 +14,15 @@ node 'dev-box' {
 		require => Exec['wget activemq']
 	}
 
-+	file { 'create activemq link':
-+		ensure => link,
-+		path => '/home/dev/Tools/activemq',
-+		target => '/home/dev/Tools/apache-activemq-5.14.0',
+	file { 'create activemq link':
+		ensure => link,
+		path => '/home/dev/Tools/activemq',
+		target => '/home/dev/Tools/apache-activemq-5.14.0',
  		require => Exec['unpack activemq']
          }
-+
-+        exec { 'Configure activemq':
-+		command => "/bin/sed -i 's|<broker xmlns=\"http://activemq.apache.org/schema/core\" brokerName=\"localhost\" dataDirectory=\"\${activemq.data}\">|<broker xmlns=\"http://activemq.apache.org/schema/core\" brokerName=\"localhost\" dataDirectory=\"\${activemq.data}\" schedulerSupport=\"true\">|g' /home/dev/Tools/activemq/conf/activemq.xml",
-+		require => File['create activemq link']
-+        }
+
+	exec { 'Configure activemq':
+		command => "/bin/sed -i 's|<broker xmlns=\"http://activemq.apache.org/schema/core\" brokerName=\"localhost\" dataDirectory=\"\${activemq.data}\">|<broker xmlns=\"http://activemq.apache.org/schema/core\" brokerName=\"localhost\" dataDirectory=\"\${activemq.data}\" schedulerSupport=\"true\">|g' /home/dev/Tools/activemq/conf/activemq.xml",
+		require => File['create activemq link']
+         }
 }
